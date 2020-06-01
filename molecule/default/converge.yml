@@ -47,7 +47,7 @@
         state: started
 
   roles:
-    - role: daveol.git-server
+    - role: daveol.git_server
 
   post_tasks:
     - name: Make sure we can login

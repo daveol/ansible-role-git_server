@@ -60,8 +60,5 @@
         - /run/nologin
       when: ansible_os_family == "RedHat"
 
-    - name: Check we can checkout the git repository # noqa 401
-      git:
-        accept_hostkey: yes
-        repo: "git@localhost:test.git"
-        dest: /tmp/test
+    - name: Check we can checkout the git repository
+      command: git git@localhost:test.git /tmp/test # noqa 303

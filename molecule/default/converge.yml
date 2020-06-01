@@ -10,7 +10,7 @@
   pre_tasks:
     - name: Create SSH keys
       user:
-        name: "{{ ansible_user }}"
+        name: "{{ ansible_env['USER'] }}"
         generate_ssh_key: yes
       register: user_ssh_key
 
@@ -18,6 +18,11 @@
       set_fact:
         git_keys:
           - "{{ user_ssh_key.ssh_public_key }}"
+
+    - name: Enable SSH server
+      service:
+        name: sshd
+        state: started
 
   roles:
     - role: daveol.git-server

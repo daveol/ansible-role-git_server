@@ -12,12 +12,3 @@
     owner: "{{ git_user }}"
     group: "{{ git_user }}"
     mode: '0755'
-
-- name: add support for cvs server
-  copy:
-    src: cvs
-    dest: "{{ git_dir }}/git-shell-commands/cvs"
-    owner: "{{ git_user }}"
-    group: "{{ git_user }}"
-    mode: '0755'
-  when: git_server_enable_cvs

@@ -8,9 +8,3 @@
   apt:
     name: "{{ git_packages }}"
     state: present
-
-- name: Ensure git-cvs is installed
-  apt:
-    name: "{{ git_cvs_packages }}"
-    state: present
-  when: git_server_enable_cvs

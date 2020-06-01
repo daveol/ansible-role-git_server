@@ -1,5 +1,4 @@
 galaxy_info:
-  role_name: git-server
   author: daveol
   description: Simple git server using ssh
 

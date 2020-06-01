@@ -7,7 +7,7 @@ cache:
 
 env:
   global:
-    - ROLE_NAME: git-server
+    - ROLE_NAME: git_server
   matrix:
     - MOLECULE_DISTRO: centos7
     - MOLECULE_DISTRO: centos8

@@ -62,4 +62,6 @@
 
     - name: Check we can checkout the git repository
       command: git clone git@localhost:test.git /tmp/test # noqa 303
+      environment:
+        GIT_SSH_OPTS: "-o StrictHostKeyChecking=no"
       changed_when: false

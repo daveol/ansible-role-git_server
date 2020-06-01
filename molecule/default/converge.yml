@@ -61,5 +61,5 @@
       when: ansible_os_family == "RedHat"
 
     - name: Check we can checkout the git repository
-      command: git git@localhost:test.git /tmp/test # noqa 303
+      command: git clone git@localhost:test.git /tmp/test # noqa 303
       changed_when: false

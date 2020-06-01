@@ -4,3 +4,10 @@
     name: "{{ git_packages }}"
     state: present
     enablerepo: "{{ git_enablerepo | default(omit, true) }}"
+
+- name: Ensure git-cvs is installed
+  package:
+    name: "{{ git_cvs_packages }}"
+    state: present
+    enablerepo: "{{ git_enablerepo | default(omit, true) }}"
+  when: git_server_enable_cvs

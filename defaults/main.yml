@@ -8,6 +8,10 @@ git_user_password: '!'
 git_enablerepo: ""
 git_packages:
   - git
+git_cvs_packages:
+  - git-cvs
+
+git_server_enable_cvs: false
 
 git_keys: []
 git_repos: []

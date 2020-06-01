@@ -61,7 +61,5 @@
       when: ansible_os_family == "RedHat"
 
     - name: Check we can checkout the git repository
-      command: git clone git@localhost:test.git /tmp/test # noqa 303
-      environment:
-        GIT_SSH_COMMAND: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
+      shell: GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git clone git@localhost:test.git /tmp/test # noqa 303
       changed_when: false

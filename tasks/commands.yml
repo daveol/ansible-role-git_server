@@ -1,0 +1,14 @@
+- name: create git-shell-commands directory
+  file:
+    path: "{{ git_dir }}/git-shell-commands"
+    state: directory
+    owner: "{{ git_user }}"
+    group: "{{ git_user }}"
+
+- name: disable interactive login
+  copy:
+    src: no-interactive-login
+    dest: "{{ git_dir }}/git-shell-commands/no-interactive-login"
+    owner: "{{ git_user }}"
+    group: "{{ git_user }}"
+    mode: '0755'

@@ -1,2 +1,9 @@
 ---
-# defaults file for daveol.git-server
+# user vars
+git_shell: /usr/bin/git-shell
+git_dir: /var/lib/git
+git_user: git
+git_user_password: '!'
+
+git_keys: []
+git_repos: []

@@ -1,0 +1,14 @@
+---
+- name: Create git user
+  user:
+    name: "{{ git_user }}"
+    comment: "Git Repository user"
+    shell: "{{ git_shell }}"
+    password: "{{ git_user_password }}"
+    home: "{{ git_dir }}"
+
+- name: Add authorized_keys to git user
+  authorized_key:
+    user: "{{ git_user }}"
+    key: "{{ git_keys | join('\n') }}"
+    exclusive: true

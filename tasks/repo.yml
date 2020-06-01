@@ -1,0 +1,29 @@
+---
+- name: Create directory for git repository
+  become: yes
+  become_user: git
+  file:
+    path: "{{ git_dir }}/{{ git_repo.path }}"
+    state: directory
+    owner: "{{ git_user }}"
+    group: "{{ git_user }}"
+
+- name: Initialize bare git repository
+  become: yes
+  become_user: git
+  command: 
+    cmd: git init --bare --shared
+    chdir: "{{ git_dir }}/{{ git_repo.path }}"
+    creates: "{{ git_dir }}/{{ git_repo.path }}/config"
+
+- name: Enable force push for repository
+  become: yes
+  become_user: git
+  git_config:
+    name: receive.denyNonFastForwards
+    value: false
+    scope: local
+    repo: "{{ git_dir }}/{{ git_repo.path }}"
+  when:
+    - git_repo.allow_force is defined
+    - git_repo.allow_force == true

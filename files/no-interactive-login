@@ -1,0 +1,4 @@
+#!/bin/sh
+printf '%s\n' "Hi, You've successfully authenticated."
+printf '%s\n' "But this server does not provide interactive shell access."
+exit 1

@@ -1,1 +1,10 @@
 ---
+- include_tasks: user.yml
+
+- include_tasks: commands.yml
+
+- name: Git repos
+  include_tasks: repo.yml
+  loop: "{{ git_repos }}"
+  loop_control:
+    loop_var: git_repo

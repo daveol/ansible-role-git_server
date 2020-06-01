@@ -11,8 +11,8 @@
 - name: Initialize bare git repository
   become: yes
   become_user: git
-  command: 
-    cmd: git init --bare --shared
+  command:
+    cmd: git init --bare --shared # noqa 303
     chdir: "{{ git_dir }}/{{ git_repo.path }}"
     creates: "{{ git_dir }}/{{ git_repo.path }}/config"
 
@@ -26,4 +26,4 @@
     repo: "{{ git_dir }}/{{ git_repo.path }}"
   when:
     - git_repo.allow_force is defined
-    - git_repo.allow_force == true
+    - git_repo.allow_force

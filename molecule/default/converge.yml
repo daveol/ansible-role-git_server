@@ -44,6 +44,16 @@
     - role: daveol.git-server
 
   post_tasks:
+    - name: Make sure we can login
+      file:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - /var/run/nologin
+        - /etc/nologin
+        - /run/nologin
+      when: ansible_os_family == "RedHat"
+
     - name: Check we can checkout the git repository
       git:
         accept_hostkey: yes

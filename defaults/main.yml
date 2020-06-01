@@ -5,5 +5,9 @@ git_dir: /var/lib/git
 git_user: git
 git_user_password: '!'
 
+git_enablerepo: ""
+git_packages:
+  - git
+
 git_keys: []
 git_repos: []

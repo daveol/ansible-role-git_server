@@ -20,6 +20,5 @@ galaxy_info:
     - git
     - ssh
 
-dependencies:
-- geerlingguy.git
+dependencies: []
   

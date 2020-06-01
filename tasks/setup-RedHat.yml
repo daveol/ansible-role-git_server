@@ -1,0 +1,6 @@
+---
+- name: Ensure git is installed
+  package:
+    name: "{{ git_packages }}"
+    state: present
+    enablerepo: "{{ git_enablerepo | default(omit, true) }}"

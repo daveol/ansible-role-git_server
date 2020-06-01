@@ -1,0 +1,10 @@
+---
+- name: Update apt cache
+  apt:
+    update_cache: true
+    cache_valid_time: 86400
+
+- name: Ensure git is installed
+  apt:
+    name: "{{ git_packages }}"
+    state: present

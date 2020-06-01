@@ -1,4 +1,14 @@
 ---
+- include_tasks: "{{ item }}"
+  loop: "{{ q('first_found', params, errors='ignore') }}"
+  vars:
+    params:
+      files:
+        - "setup-{{ ansible_os_family }}.yml"
+      paths:
+        - 'tasks'
+      skip: true
+
 - include_tasks: user.yml
 
 - include_tasks: commands.yml

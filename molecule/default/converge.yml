@@ -18,8 +18,9 @@
     - role: daveol.git-server
 
   post_tasks:
-    - name: Verify postgres is running.
+    - name: Check we can checkout the git repository
       git:
         accept_hostkey: yes
         repo: "git@localhost:test.git"
         dest: /tmp/test
+        version: master

@@ -23,7 +23,7 @@
           - openssh-clients
         state: present
       when: ansible_os_family == "RedHat"
-      
+
     - name: Create SSH keys
       user:
         name: "{{ ansible_env['USER'] }}"

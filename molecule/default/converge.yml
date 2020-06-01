@@ -8,6 +8,22 @@
       - path: test.git
 
   pre_tasks:
+    - name: Install SSH (Debian)
+      package:
+        name:
+          - openssh-client
+          - openssh-server
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: Install SSH (RedHat)
+      package:
+        name:
+          - openssh-server
+          - openssh-clients
+        state: present
+      when: ansible_os_family == "RedHat"
+      
     - name: Create SSH keys
       user:
         name: "{{ ansible_env['USER'] }}"

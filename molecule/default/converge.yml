@@ -60,6 +60,12 @@
         - /run/nologin
       when: ansible_os_family == "RedHat"
 
+    - name: Generate known_hosts
+      shell: ssh-keyscan localhost >> ~/.ssh/known_hosts # noqa 305
+      args:
+        creates: ~/.ssh/known_hosts
+
     - name: Check we can checkout the git repository
-      shell: GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git clone git@localhost:test.git /tmp/test # noqa 303, 305
-      changed_when: false
+      command: git clone git@localhost:test.git /tmp/test # noqa 303
+      args:
+        creates: /tmp/test/.git

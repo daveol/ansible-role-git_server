@@ -8,11 +8,16 @@
       - path: test.git
 
   pre_tasks:
-    # The Fedora 30+ container images have only C.UTF-8 installed
-    - name: Set database locale if using Fedora 30+ or RedHat 8+
+    - name: Create SSH keys
+      user:
+        name: "{{ ansible_user }}"
+        generate_ssh_key: yes
+      register: user_ssh_key
+
+    - name: Set SSH keys
       set_fact:
         git_keys:
-          - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFhyob72VL/7+5Jocjoqb9KtWwiUy6DM5/AN/jZjXZeL dolsthoorn@esri.nl
+          - "{{ user_ssh_key.ssh_public_key }}"
 
   roles:
     - role: daveol.git-server
